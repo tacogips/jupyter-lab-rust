@@ -26,6 +26,6 @@ services:
 ## The default command
 ```Dockerfile
 ENTRYPOINT ["jupyter", "lab", "--ip=0.0.0.0", "--port=8888"]
-CMD ["--notebook-dir=/notebooks", "--allow-root", "--no-browser","--NotebookApp.token=''","--NotebookApp.password=''"]
+CMD ["--notebook-dir=/notebooks", "--allow-root", "--no-browser","--NotebookApp.token=''","--NotebookApp.password=''","--NotebookApp.disable_check_xsrf=True"]
 ```
 

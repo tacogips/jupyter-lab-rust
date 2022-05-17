@@ -22,4 +22,5 @@ WORKDIR /notebooks
 EXPOSE 8888
 
 ENTRYPOINT ["jupyter", "lab", "--ip=0.0.0.0", "--port=8888"]
-CMD ["--notebook-dir=/notebooks", "--allow-root", "--no-browser","--NotebookApp.token=''","--NotebookApp.password=''"]
+CMD ["--notebook-dir=/notebooks", "--allow-root", "--no-browser","--NotebookApp.token=''","--NotebookApp.password=''","--NotebookApp.disable_check_xsrf=True"]
+

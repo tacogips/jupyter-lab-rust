@@ -1,4 +1,4 @@
-ARG RUST_VER=1.60
+ARG RUST_VER=1.61
 
 from rust:${RUST_VER}-slim
 
@@ -6,6 +6,8 @@ RUN apt update && apt install -y \
 		python3 \
 		python3-pip \
 	  g++ \
+	  libssl-dev \
+	  pkg-config \
 	  cmake && rm -rf /var/lib/apt/lists/*
 
 RUN pip3 install jupyterlab
@@ -13,8 +15,9 @@ RUN pip3 install jupyterlab
 #jupyter labextension install @jupyterlab/hub-extension
 #jupyter lab build
 
+COPY init.evcxr /root/.config/evxcr/init.evcxr
 
-RUN cargo install evcxr_jupyter && evcxr_jupyter --install && rm -rf /usr/local/cargo/registry
+RUN cargo install evcxr_jupyter sccache && evcxr_jupyter --install && rm -rf /usr/local/cargo/registry
 
 VOLUME /notebooks
 WORKDIR /notebooks
